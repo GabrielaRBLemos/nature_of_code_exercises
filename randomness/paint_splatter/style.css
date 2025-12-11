@@ -1,0 +1,18 @@
+html, body {
+ margin: 0;
+ padding: 0;
+}
+body {
+ cursor: url('./Spray_Paint_Can.png') 12 12, auto;
+}
+
+canvas {
+  display: block;
+}
+
+main{
+  display: flex;
+  width:max-content;
+  justify-content:space-evenly;
+  align-items:space-evenly;
+}

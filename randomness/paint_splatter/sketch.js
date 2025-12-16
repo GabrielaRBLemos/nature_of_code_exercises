@@ -3,6 +3,7 @@ const canvasHeight = 4 * window.innerHeight/5;
 let distanceSlider;
 let sizeSlider;
 let hueSlider;
+let hueAverageSlider;
 let saturationSlider;
 let luminanceSlider;
 function setup() {
@@ -19,7 +20,7 @@ function draw() {
   // r = randomGaussian(113, hueSlider.value());
   // g = randomGaussian(0, hueSlider.value());
   // b = randomGaussian(0, hueSlider.value());
-  hue = randomGaussian(180, hueSlider.value());
+  hue = randomGaussian(hueAverageSlider.value(), hueSlider.value());
   saturation = randomGaussian(50, saturationSlider.value());
   luminance = randomGaussian(50, luminanceSlider.value());
   fill(hue,saturation,luminance,30);
@@ -38,10 +39,11 @@ function createAllSliders() {
     return slider;
   }
 
-  distanceSlider   = makeSlider("Distance",   1, 50, 20);
-  sizeSlider       = makeSlider("Size",        0, 5, 1);
-  hueSlider        = makeSlider("Hue",         0, 180, 0);
-  saturationSlider = makeSlider("Saturation",  0, 50, 25);
-  luminanceSlider  = makeSlider("Luminance",   0, 50, 25);
+  distanceSlider   = makeSlider("Distance's STD",   1, 50, 20);
+  sizeSlider       = makeSlider("Size's STD",        0, 5, 1);
+  hueSlider        = makeSlider("Hue's STD",         0, 180, 0);
+  hueAverageSlider  = makeSlider("Hue's Average", 0, 360, 180);
+  saturationSlider = makeSlider("Saturation's STD",  0, 50, 25);
+  luminanceSlider  = makeSlider("Luminance's STD",   0, 50, 25);
 }
 

@@ -2,7 +2,6 @@ const canvasWidth = 4 * window.innerWidth/5;
 const canvasHeight = 4 * window.innerHeight/5;
 let walker;
 let selector;
-// let walkers = [];
 
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
@@ -20,22 +19,11 @@ function setup() {
   selector.changed(resetWalker);
   walker = new Walker(step4);
 
-  // walkers.push(new Walker(step4));
-  // walkers.push(new Walker(step8));
-  // walkers.push(new Walker(stepContinuous));
-  // walkers.push(new Walker(stepNonUniform));
-  // walkers.push(new Walker(stepDynamic));
-
 }
 
 function draw() {
   walker.step();
   walker.show();
-
-  // for (let w of walkers) {
-  //   w.step();
-  //   w.show();
-  // }
 }
 
 function resetWalker() {
@@ -144,82 +132,3 @@ const stepDynamic = (x,y) => {
       }while (abs(r2) < abs(r1))
       return r1;
     }
-// class Walker {
-//   constructor() {
-//     this.x = width / 2;
-//     this.y = height / 2;
-//   }
-
-//   show() {
-//     stroke(0);
-//     point(this.x, this.y);
-//   }
-
-//   step() {
-
-    //== Just 4 directions ==
-
-    // const choice = floor(random(4));
-    // if (choice == 0) {
-    //   this.x++;
-    // } else if (choice == 1) {
-    //   this.x--;
-    // } else if (choice == 2) {
-    //   this.y++;
-    // } else {
-    //   this.y--;
-    // }
-
-    //== Left, right, up, downm + diagonals ==
-
-    // const xstep = floor(random(3)) - 1;
-    // const ystep = floor(random(3)) - 1;
-
-    //== Any 2d direction ==
-
-    // const xstep = random(-1,1);
-    // const ystep = random(-1,1);
-
-    //== Any type of uniform distribution other than 4 directions==
-    
-    // this.x += xstep;
-    // this.y += ystep;
-
-    //== non uniform distribution (greater tendency to move down and to the right) ==
-
-    // const r = random(1);
-    // if (r < 0.4) {
-    //   this.x++;
-    // } else if (r < 0.6) {
-    //   this.x--;
-    // } else if (r < 0.8) {
-    //   this.y++;
-    // } else {
-    //   this.y--;
-    // }
-    //==random walker with dynamic probabilities. 50 percent chance of moving in the direction of the mouse.//
-    
-    // const r = random([0,1]);
-    // if (r === 0) {
-    //   if (this.x > mouseX) {
-    //     this.x--
-    //   }
-    //   else{
-    //     this.x++
-    //   }
-    //   if (this.y > mouseY) {
-    //     this.y--
-    //   }
-    //   else{
-    //     this.y++
-    //   }
-    // }
-    // else{
-    //   const xstep = random(-1,1);
-    //   const ystep = random(-1,1);
-      
-    //   this.x += xstep;
-    //   this.y += ystep;
-//     }
-//   }
-// }

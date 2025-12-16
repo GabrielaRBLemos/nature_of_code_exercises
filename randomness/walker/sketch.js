@@ -118,17 +118,29 @@ const stepDynamic = (x,y) => {
   const stepAcceptReject = () =>{
     //the longer the step, the less likely it is to be picked https://natureofcode.com/random/#a-custom-distribution-of-random-numbers//
 
-    return { dx: acceptReject(-1,1), dy: acceptReject(-1,1)}
+    return { dx: acceptRejectQuadratic(-1,1), dy: acceptRejectQuadratic(-1,1)}
 
   }
 
-  acceptReject  = (min,max) =>{
+  acceptRejectQuadratic  = (min,max) =>{
+    //(y=x*x)//
     let r1;
     let r2;
     do {
         r1 = random(min,max);
         r2 = random(min,max);
 
-      }while (abs(r2) < abs(r1))
+      }while (abs(r2) < r1*r1)
       return r1;
     }
+  // acceptRejectLinear  = (min,max) =>{
+  //   //(y=x)//
+  //   let r1;
+  //   let r2;
+  //   do {
+  //       r1 = random(min,max);
+  //       r2 = random(min,max);
+
+  //     }while (abs(r2) < abs(r1))
+  //     return r1;
+  //   }

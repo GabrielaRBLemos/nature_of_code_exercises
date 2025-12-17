@@ -60,7 +60,7 @@ class Walker {
     // stroke(0);
     // point(this.x, this.y);
     noStroke();
-    fill(255, 165, 0, 41)
+    fill(86, 30, 70, 42)
     circle(this.x, this.y, this.d);
   }
 

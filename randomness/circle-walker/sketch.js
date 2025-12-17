@@ -1,5 +1,5 @@
-const canvasWidth = 4 * window.innerWidth/5;
-const canvasHeight = 4 * window.innerHeight/5;
+const canvasWidth = 5 * window.innerWidth/6;
+const canvasHeight = 5 * window.innerHeight/6;
 let walker;
 let selector;
 
@@ -18,7 +18,7 @@ function setup() {
   selector.option('Noise');
 
   selector.changed(resetWalker);
-  walker = new Walker(step4);
+  walker = new Walker(step4),10;
 
 }
 
@@ -44,19 +44,24 @@ function resetWalker() {
 }
 
 class Walker {
-  constructor(stepFunction) {
+  constructor(stepFunction, diameter = 15) {
     this.stepFunction = stepFunction;
+
+    this.d = diameter;
     
     this.x = width / 2;
     this.y = height / 2;
 
-    this.tx = random(1000);
-    this.ty = random(1000);
+    this.tx = 0;
+    this.ty = 1000;
   }
 
   show() {
-    stroke(0);
-    point(this.x, this.y);
+    // stroke(0);
+    // point(this.x, this.y);
+    noStroke();
+    fill(255, 165, 0, 41)
+    circle(this.x, this.y, this.d);
   }
 
   // step() {
@@ -85,18 +90,13 @@ class Walker {
 // }
 
 const step4 = (walker) => {
-  //== 4 directions https://natureofcode.com/random/#the-random-walker-class==
+//== 4 directions https://natureofcode.com/random/#the-random-walker-class==
   const r = floor(random(4));
-  if (r == 0) {
-    walker.x++;
-  } else if (r == 1) {
-    walker.x--;
-  } else if (r == 2) {
-    walker.y++;
-  } else {
-    walker.y--;
-  }
-}
+  if (r === 0) walker.x += walker.d;
+  else if (r === 1) walker.x -= walker.d;
+  else if (r === 2) walker.y += walker.d;
+  else walker.y -= walker.d;
+};
 
 // const step8 = () => {
 //   //== 8 directions https://natureofcode.com/random/#the-random-walker-class==
@@ -104,9 +104,8 @@ const step4 = (walker) => {
 // }
 
 const step8 = (walker) => {
-  //== 8 directions https://natureofcode.com/random/#the-random-walker-class==
-  walker.x += floor(random(3)) - 1;
-  walker.y += floor(random(3)) - 1;
+  walker.x += (floor(random(3)) - 1) * walker.d;
+  walker.y += (floor(random(3)) - 1) * walker.d;
 };
 
 // const stepContinuous = () => {
@@ -116,8 +115,8 @@ const step8 = (walker) => {
 
 const stepContinuous = (walker) => {
   //== Any direction (continuos range) https://natureofcode.com/random/#the-random-walker-class==
-  walker.x += random(-1, 1);
-  walker.y += random(-1, 1);
+  walker.x += random(-walker.d, walker.d);
+  walker.y += random(-walker.d, walker.d);
 };
 
 // const stepNonUniform = () => {
@@ -135,17 +134,11 @@ const stepContinuous = (walker) => {
 // }
 
 const stepNonUniform = (walker) => {
-  //== Biased to moving to the right (non uniform distribution) https://natureofcode.com/random/#probability-and-nonuniform-distributions==
   const r = random(1);
-  if (r < 0.4) {
-    walker.x++;
-  } else if (r < 0.6) {
-    walker.x--;
-  } else if (r < 0.8) {
-    walker.y++;
-  } else {
-    walker.y--;
-  }
+  if (r < 0.4) walker.x += walker.d;
+  else if (r < 0.6) walker.x -= walker.d;
+  else if (r < 0.8) walker.y += walker.d;
+  else walker.y -= walker.d;
 };
 
 
@@ -163,13 +156,12 @@ const stepNonUniform = (walker) => {
 const stepDynamic = (walker) => {
   //== 50% to moving towards the cursor (dynamic probabilities) https://natureofcode.com/random/#probability-and-nonuniform-distributions==
   const r = random([0, 1]);
-
   if (r === 0) {
-    walker.x += walker.x > mouseX ? -1 : 1;
-    walker.y += walker.y > mouseY ? -1 : 1;
+    walker.x += walker.x > mouseX ? -walker.d : walker.d;
+    walker.y += walker.y > mouseY ? -walker.d : walker.d;
   } else {
-    walker.x += random(-1, 1);
-    walker.y += random(-1, 1);
+    walker.x += random(-walker.d, walker.d);
+    walker.y += random(-walker.d, walker.d);
   }
 };
 
@@ -179,9 +171,8 @@ const stepDynamic = (walker) => {
 // }
 
 const stepGaussian = (walker) => {
-  //== steps generated with a normal distribution https://natureofcode.com/random/#a-normal-distribution-of-random-numbers==
-  walker.x += randomGaussian(0, 1);
-  walker.y += randomGaussian(0, 1);
+  walker.x += round(randomGaussian()) * walker.d;
+  walker.y += round(randomGaussian()) * walker.d;
 };
 
 // const stepAcceptReject = () =>{
@@ -192,9 +183,8 @@ const stepGaussian = (walker) => {
 // }
 
 const stepAcceptReject = (walker) => {
-  //the longer the step, the less likely it is to be picked https://natureofcode.com/random/#a-custom-distribution-of-random-numbers//
-  walker.x += acceptRejectQuadratic(-1, 1);
-  walker.y += acceptRejectQuadratic(-1, 1);
+  walker.x += round(acceptRejectQuadratic(-1, 1)) * walker.d;
+  walker.y += round(acceptRejectQuadratic(-1, 1)) * walker.d;
 };
 
 acceptRejectQuadratic  = (min,max) =>{
@@ -220,10 +210,18 @@ acceptRejectQuadratic  = (min,max) =>{
 //     return r1;
 //   }
 
+  // const stepNoise = (walker) =>{
+  //   //naturally ordered sequence of pseudorandom numbers for the steps https://natureofcode.com/random/#a-smoother-approach-with-perlin-noise//
+  //   walker.x = map(noise(walker.tx), 0, 1, 0, width);
+  //   walker.y = map(noise(walker.ty), 0, 1, 0, height);
+  //   walker.tx += 0.005;
+  //   walker.ty += 0.005;
+  // }
+
   const stepNoise = (walker) =>{
     //naturally ordered sequence of pseudorandom numbers for the steps https://natureofcode.com/random/#a-smoother-approach-with-perlin-noise//
-    walker.x = map(noise(walker.tx), 0, 1, 0, width);
-    walker.y = map(noise(walker.ty), 0, 1, 0, height);
-    walker.tx += 0.005;
-    walker.ty += 0.005;
+    walker.x = map(noise(walker.tx), 0, 1, walker.d, width);
+    walker.y = map(noise(walker.ty), 0, 1, walker.d, height);
+    walker.tx += 0.01;
+    walker.ty += 0.01;
   }

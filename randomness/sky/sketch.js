@@ -1,15 +1,25 @@
+let music;
+let playButton;
 const canvasWidth = window.innerWidth;
 const canvasHeight = window.innerHeight;
 let luminance;
 let hue;
 let offset = 0.0;
 
+function preload() {
+//   music = loadSound("randomness/sky/piano-438549.mp3");
+}
+
 function setup() {
 
     createCanvas(canvasWidth, canvasHeight);
-    frameRate(480)
+    frameRate(144)
     colorMode(HSL);
     loadPixels();
+    let p = createP('The sky is the ultimate art gallery just above us.<br>-Ralph Waldo Emerson');
+    p.center()
+    // playButton = createButton("Play Music");
+    // playButton.mousePressed(toggleMusic);
 
 // b&w noise
     // let xoff = 0.0;
@@ -28,7 +38,6 @@ function setup() {
 }
 function draw() {
     offset += 0.01
-    console.log(offset)
     let xoff = 0.0 + offset;
 
     for (let x = 0; x < width; x++) {

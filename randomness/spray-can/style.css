@@ -1,13 +1,13 @@
 html, body {
  margin: 0;
  padding: 0;
- cursor: url('./Spray_Paint_Can.png') 12 12, auto;
+ cursor: url('/assets/Spray_Paint_Can.png') 12 12, auto;
  text-align: center;
 }
 
 canvas {
   border: 70px solid transparent;
-  border-image: url("./Empty-frame.png") 80;
+  border-image: url("/assets/Empty-frame.png") 80;
   
 }
 

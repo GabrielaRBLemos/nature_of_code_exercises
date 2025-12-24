@@ -11,7 +11,7 @@ let hue;
 let offset = 0.0;
 
 function preload() {
-   music = loadSound("./piano-438549.mp3");
+   music = loadSound("/assets/piano-438549.mp3");
 }
 
 function setup() {

@@ -1,0 +1,198 @@
+:root{
+    --background-color:#E4D7C4;
+    --text-color:#561E46;
+    --accent-color:#A45A3A;
+    --border-width: 2px;
+    --border-style: solid;
+    --corner-roundness: 8px;
+    --text-size:1em;
+}
+/* Font Related CSS*/
+@font-face {
+    font-family: "Coaster-Simoney";
+    src: url("/assets/fonts/coaster-simone-font-1742073987-0/Coaster-Simone-BF6759db02ed0f0.otf");
+}
+@font-face {
+    font-family: "Betania-Patmos";
+    src: url("/assets/fonts/betania_patmos/fonts/BetaniaPatmos-Regular.otf");
+}
+h1,h2,h3,h4{
+    font-family: "Coaster-Simoney";
+}
+h1 {
+    font-size: 2.3em;
+}
+h2 {
+    font-size: 1.8em;
+}
+h3 {
+    font-size: 1.47em;
+}
+h4 {
+    font-size: 1.3em;
+}
+body{
+    font-size: var(--text-size);
+}
+/*END of Font Related CSS*/
+/* Navigation Related CSS*/
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: var(--border-style) var(--border-width);
+}
+nav{
+    flex-grow: 5;
+    display: grid;
+    grid-auto-flow:column;
+    grid-template-rows:100%;
+    grid-auto-columns:auto auto auto auto auto;
+}
+nav a{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    text-decoration: none;
+    color:var(--text-color);
+    font-weight: bold;
+    width: 100%;
+    border-left: var(--border-width) var(--border-style);
+}
+nav a:hover{
+    text-decoration:  underline;
+}
+/*END of Navigation Related CSS*/
+/* Standard Class CSS*/
+*{
+    color: var(--text-color);
+    background-color: var(--background-color);
+    text-align: center;
+    font-family:"Betania-Patmos";
+}
+a,strong,em{
+    color: var(--accent-color);
+}
+header h1{
+    flex-grow: 1;
+}
+main{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+main p{
+    width: 60vw;
+    text-align: center;
+}
+footer{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    border-top: var(--border-style) var(--border-width);
+    margin-top: 4vh;
+}
+table {
+    border-collapse: collapse;
+    margin: 4vw;
+}
+td, th {
+    border: var(--border-style) var(--border-width);
+    padding: var(--border-width);
+}
+table tr:first-child th {
+    border-top: 0;
+}
+table tr:last-child td {
+    border-bottom: 0;
+}
+table tr td:first-child, table tr th:first-child {
+    border-left: 0;
+}
+table tr td:last-child,table tr th:last-child {
+    border-right: 0;
+}
+label{
+    padding: 0;
+    margin: 0;
+}
+select,input{
+    border: none;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    opacity: 60%;
+}
+form button{
+    margin-top: 2vh;
+}
+button{
+    border: none;
+    background: var(--text-color);
+    color: var(--background-color);
+    border-radius: var(--corner-roundness);
+    padding: 4%;
+}
+/*END of Standard Class CSS*/
+.h-with-subtitle {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+}
+.h-with-subtitle p{
+    margin-top: calc(-1*var(--text-size));
+    opacity: 75%;
+}
+#typed{
+    height: var(--text-size);
+    border-right: var(--border-width) solid;
+    animation: blink-caret 1s step-end infinite;
+}
+/*== Phone media queries==*/
+
+@media only screen and (orientation: portrait){
+    nav{
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: space-evenly;
+        gap: 4vw;
+    }
+    nav a{
+        border: none;
+    }
+    header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    h3 {
+        font-size: 1.17em;
+    }
+    h4 {
+        font-size: 1em;
+    }
+    body {
+        font-size: 1em;
+    }
+}
+/*== END of Phone media queries==*/
+/*== Animation==*/
+@keyframes blink-caret {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: var(--text-color); }
+}
+/*== END of animation==*/

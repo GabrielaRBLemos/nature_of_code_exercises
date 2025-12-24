@@ -1,6 +1,10 @@
 html, body {
  margin: 0;
  padding: 0;
+ color: #0B5563;
+}
+body a, button{
+ color: #0B5563;
 }
 
 canvas {

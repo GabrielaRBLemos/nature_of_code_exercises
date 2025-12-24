@@ -1,18 +1,17 @@
-const canvasWidth = 5 * window.innerWidth/6;
+const canvasWidth = window.innerWidth;
 const canvasHeight = 5 * window.innerHeight/6;
 let walker;
 let selector;
 
 function setup() {
-  createCanvas(canvasWidth, canvasHeight);
-  background(255);
+  canvas=createCanvas(canvasWidth, canvasHeight);
 
   selector = createSelect();
   selector.option('4 Directions');
   selector.option('8 Directions');
   selector.option('Continuous');
-  selector.option('Non Uniform');
-  selector.option('Dynamic');
+  selector.option('Non Uniform (Right Bias)');
+  selector.option('Dynamic (Move your cursor!)');
   selector.option('Gaussian');
   selector.option('Accept-Reject');
   selector.option('Noise');
@@ -35,8 +34,8 @@ function resetWalker() {
     '4 Directions': step4,
     '8 Directions': step8,
     'Continuous': stepContinuous,
-    'Non Uniform': stepNonUniform,
-    'Dynamic': stepDynamic,
+    'Non Uniform (Right Bias)': stepNonUniform,
+    'Dynamic (Move your cursor!)': stepDynamic,
     'Accept-Reject': stepAcceptReject,
     'Noise': stepNoise
   };
@@ -45,6 +44,7 @@ function resetWalker() {
 
 class Walker {
   constructor(stepFunction, diameter = 15) {
+    canvas.clear()
     this.stepFunction = stepFunction;
 
     this.d = diameter;

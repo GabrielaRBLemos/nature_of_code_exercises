@@ -1,5 +1,5 @@
-const canvasWidth = 4 * window.innerWidth/5;
-const canvasHeight = 4 * window.innerHeight/5;
+const canvasWidth = 3 * window.innerWidth/4;
+const canvasHeight = 2 * window.innerHeight/4;
 let distanceSlider;
 let sizeSlider;
 let hueSlider;
@@ -7,7 +7,7 @@ let hueAverageSlider;
 let saturationSlider;
 let luminanceSlider;
 function setup() {
-  createCanvas(canvasWidth, canvasHeight);
+  canvas = createCanvas(canvasWidth, canvasHeight);
   colorMode(HSL);
   createAllSliders()
 }

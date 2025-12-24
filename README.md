@@ -6,3 +6,7 @@ This repository contains my exercises and experiments while working through [The
 ## Contents
 
 - `/randomness`: Exercises exploring randomness and probability
+
+## How to Use it?
+
+Access it through [this link](https://gabrielarblemos.github.io/nature_of_code_exercises/)!

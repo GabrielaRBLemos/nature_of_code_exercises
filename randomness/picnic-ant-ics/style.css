@@ -1,11 +1,11 @@
 :root{
-    --background-image:url('/assets/pexels-eva-bronzini-7598387.jpg');
+    --background-image:url('assets/pexels-eva-bronzini-7598387.jpg');
     --text-color:#382208;
     --text-size:1em;
 }
 @font-face {
     font-family: "Ouvrieres-soldates";
-    src: url("/assets/fonts/Ouvrieres/web/Ouvrieres-soldates.woff");
+    src: url("assets/fonts/Ouvrieres/web/Ouvrieres-soldates.woff");
 }
 *{
   color: var(--text-color);
@@ -17,7 +17,7 @@ p, h1, select, canvas{
   background-size: cover;
 }
 h1 {
-  font-size: 6.9em;
+  font-size: 6.3em;
   font-family:"Ouvrieres-soldates";
   font-weight: normal;
   width: 50vw;
@@ -30,7 +30,7 @@ margin: 0;
 padding: 0;
 text-align: center;
 color: var(--text-color);
-background: url('/assets/Gingham_(blue),_offset,_zoomed_out.png');
+background: url('assets/Gingham_(blue),_offset,_zoomed_out.png');
 display: flex;
 flex-direction: column;
 justify-content: center;

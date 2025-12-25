@@ -1,13 +1,13 @@
 html, body {
  margin: 0;
  padding: 0;
- cursor: url('assets/Spray_Paint_Can.png') 12 12, auto;
+ cursor: url('../assets/Spray_Paint_Can.png') 12 12, auto;
  text-align: center;
 }
 
 @font-face {
     font-family: "Fungal";
-    src: url("assets/fungal-main/fonts/webfonts/Fungal-Grow200Thickness500.woff");
+    src: url("../assets/fungal-main/fonts/webfonts/Fungal-Grow200Thickness500.woff");
 }
 
 h1{
@@ -17,7 +17,7 @@ h1{
 
 canvas {
   border: 70px solid transparent;
-  border-image: url("assets/Empty-frame.png") 80;
+  border-image: url("../assets/Empty-frame.png") 80;
   
 }
 

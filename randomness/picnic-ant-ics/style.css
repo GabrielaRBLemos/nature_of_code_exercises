@@ -1,0 +1,60 @@
+:root{
+    --background-image:url('/assets/pexels-eva-bronzini-7598387.jpg');
+    --text-color:#382208;
+    --text-size:1em;
+}
+@font-face {
+    font-family: "Ouvrieres-soldates";
+    src: url("/assets/fonts/Ouvrieres/web/Ouvrieres-soldates.woff");
+}
+*{
+  color: var(--text-color);
+  text-align: center;
+}
+p, h1, select, canvas{
+  background:var(--background-image);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  background-size: cover;
+}
+h1 {
+  font-size: 6.9em;
+  font-family:"Ouvrieres-soldates";
+  font-weight: normal;
+  width: 50vw;
+  padding:0;
+  margin-bottom: 0;
+}
+body {
+font-size: var(--text-size);
+margin: 0;
+padding: 0;
+text-align: center;
+color: var(--text-color);
+background: url('/assets/Gingham_(blue),_offset,_zoomed_out.png');
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 1vw 1vh;
+}
+
+#container{
+display: flex;
+flex-direction: column-reverse;
+justify-content: center;
+align-items: center;
+gap: 1vw 1vh;
+}
+
+canvas {
+  display: block;
+  background-size: contain;
+}
+select{
+  border: none;
+  font-weight: bold;
+  color: var(--text-color);
+  text-align: center;
+  width: 28vw;
+  height: 6vh;
+}

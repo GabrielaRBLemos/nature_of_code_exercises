@@ -5,6 +5,16 @@ html, body {
  text-align: center;
 }
 
+@font-face {
+    font-family: "Fungal";
+    src: url("/assets/fungal-main/fonts/webfonts/Fungal-Grow200Thickness500.woff");
+}
+
+h1{
+  font-family: Fungal;
+  font-size: 3.1em;
+}
+
 canvas {
   border: 70px solid transparent;
   border-image: url("/assets/Empty-frame.png") 80;

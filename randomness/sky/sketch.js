@@ -12,13 +12,14 @@ let offset = 0.0;
 let speed=0.0;
 
 function preload() {
-   music = loadSound("/assets/piano-438549.mp3");
+   music = loadSound("../../assets/piano-438549.mp3");
 }
 
 function setup() {
 
     createCanvas(canvasWidth, canvasHeight);
-    frameRate(144)
+    frameRate(30);
+    pixelDensity(1);
     colorMode(HSL);
     loadPixels();
     div = createDiv();
@@ -79,6 +80,7 @@ function draw() {
 }
 
 function toggleMusic() {
+  userStartAudio();
   if (music.isPlaying()) {
     music.pause();
     playButton.html("▶");

@@ -79,6 +79,8 @@ class Walker {
   // }
 
   step() {
+    this.position.x = constrain(this.position.x, 0, canvasWidth);
+    this.position.y = constrain(this.position.y, 0, canvasHeight);
     this.stepFunction(this);
   }
 }
